@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>列転記マッピング表</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #f0f4f8;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      max-width: 860px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, #1e3a5f, #2d6a9f);
+      color: white;
+      padding: 28px 32px;
+    }
+
+    .card-header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .card-header p {
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    .card-body {
+      padding: 24px 32px 32px;
+    }
+
+    .file-labels {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .file-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .file-badge.source {
+      background: #fff3e0;
+      color: #e65100;
+      border: 1.5px solid #ffb74d;
+    }
+
+    .file-badge.dest {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1.5px solid #66bb6a;
+    }
+
+    .file-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .file-badge.source .dot { background: #e65100; }
+    .file-badge.dest .dot { background: #2e7d32; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: #f8fafc;
+    }
+
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 12px;
+      color: #64748b;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 2px solid #e2e8f0;
+      white-space: nowrap;
+    }
+
+    thead th.source-col { color: #e65100; }
+    thead th.dest-col   { color: #2e7d32; }
+
+    tbody tr {
+      transition: background 0.15s;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f8fafc; }
+
+    td {
+      padding: 14px 16px;
+      vertical-align: middle;
+    }
+
+    .no-cell {
+      font-weight: 700;
+      color: #94a3b8;
+      font-size: 13px;
+      width: 36px;
+    }
+
+    .col-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .col-tag.source {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .col-tag.dest {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .item-name {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .arrow-cell {
+      text-align: center;
+      font-size: 18px;
+      color: #94a3b8;
+      width: 32px;
+    }
+
+    .note-cell {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .note-badge {
+      display: inline-block;
+      background: #fef9c3;
+      color: #854d0e;
+      border: 1px solid #fde047;
+      border-radius: 5px;
+      padding: 2px 8px;
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    .footer-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h1>列転記マッピング表</h1>
+      <p>②Actual_Shipping_ &nbsp;→&nbsp; ①Digital_raw_data.xlsx</p>
+    </div>
+    <div class="card-body">
+      <div class="file-labels">
+        <div class="file-badge source">
+          <span class="dot"></span>転記元：② Actual_Shipping_
+        </div>
+        <div class="file-badge dest">
+          <span class="dot"></span>転記先：① Digital_raw_data.xlsx
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th class="source-col">② 列</th>
+              <th class="source-col">② 項目名</th>
+              <th class="arrow-cell"></th>
+              <th class="dest-col">① 列</th>
+              <th class="dest-col">① 項目名</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="no-cell">1</td>
+              <td><span class="col-tag source">D列</span></td>
+              <td class="item-name">Unit</td>
+              <td class="arrow-cell">→</td>
+              <td><span class="col-tag dest">F列</span></td>
+              <td class="item-name">SHIP units</td>
+              <td class="note-cell">—</td>
+            </tr>
+            <tr>
+              <td class="no-cell">2</td>
+              <td><span class="col-tag source">L列</span></td>
+              <td class="item-name">Scatch</td>
+              <td class="arrow-cell">→</td>
+              <td><span class="col-tag dest">H列</span></td>
+              <td class="item-name">Sameday</td>
+              <td class="note-cell">—</td>
+            </tr>
+            <tr>
+              <td class="no-cell">3</td>
+              <td><span class="col-tag source">T列</span></td>
+              <td class="item-name">Next</td>
+              <td class="arrow-cell">→</td>
+              <td><span class="col-tag dest">I列</span></td>
+              <td class="item-name">Knato Next</td>
+              <td class="note-cell">—</td>
+            </tr>
+            <tr>
+              <td class="no-cell">4</td>
+              <td><span class="col-tag source">AB列</span></td>
+              <td class="item-name">Convenience</td>
+              <td class="arrow-cell">→</td>
+              <td><span class="col-tag dest">J列</span></td>
+              <td class="item-name">Konbini Units</td>
+              <td class="note-cell">—</td>
+            </tr>
+            <tr>
+              <td class="no-cell">5</td>
+              <td><span class="col-tag source">AR列＋AV列</span></td>
+              <td class="item-name">Other</td>
+              <td class="arrow-cell">→</td>
+              <td><span class="col-tag dest">K列</span></td>
+              <td class="item-name">Gift total Units</td>
+              <td class="note-cell"><span class="note-badge">2列合算</span></td>
+            </tr>
+            <tr>
+              <td class="no-cell">6</td>
+              <td><span class="col-tag source">AZ列</span></td>
+              <td class="item-name">Gift</td>
+              <td class="arrow-cell">→</td>
+              <td><span class="col-tag dest">L列</span></td>
+              <td class="item-name">Pack List</td>
+              <td class="note-cell">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="footer-note">※ 5番の「Other」はAR列とAV列の合算値をK列に転記する</p>
+    </div>
+  </div>
+</body>
+</html>
